@@ -31,6 +31,7 @@ export default async function handler(req, res) {
     const answer = data.choices?.[0]?.message?.content || "No answer returned.";
     res.status(200).json({ answer });
   } catch (err) {
+    console.error("OpenAI Error:", err);  // 👈 This line is new
     res.status(500).json({ error: "Failed to fetch AI response", details: err.message });
   }
-}
+  
